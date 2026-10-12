@@ -1,0 +1,19 @@
+model_list:
+  - model_name: smart
+    litellm_params:
+      model: openrouter/openai/gpt-5o-mini
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: fast
+    litellm_params:
+      model: openrouter/openai/gpt-4o-mini
+      api_key: os.environ/OPENROUTER_API_KEY
+
+router_settings:
+  num_retries: 2
+  fallbacks:
+    - smart:
+        - fast
+
+general_settings:
+  master_key: sk-local-1234
